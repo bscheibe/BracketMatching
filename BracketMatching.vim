@@ -3,6 +3,7 @@
 """ Automatically inserts a closing bracket/parentheses/quotation when typing an opening one in insert mode.
 
 
+" Setup.
 let g:bracket_matching=1
 
 
@@ -23,11 +24,14 @@ function! ToggleBracketMatching()
                 inoremap [ []<left>
                 inoremap { {}<left>
         else
-                iunmap "
-                iunmap '
-                iunmap (
-                iunmap [
-                iunmap {
+                try
+                        iunmap "
+                        iunmap '
+                        iunmap (
+                        iunmap [
+                        iunmap {
+                catch
+                endtry
         endif
         let g:bracket_matching=!g:bracket_matching
 endfunction
